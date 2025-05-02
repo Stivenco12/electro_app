@@ -2,9 +2,7 @@ package electro_app.electro_app.domain.entities;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,5 +40,4 @@ public class region {
     @OneToMany(mappedBy = "idRegion",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<City> cities = new HashSet<>();
-
 }

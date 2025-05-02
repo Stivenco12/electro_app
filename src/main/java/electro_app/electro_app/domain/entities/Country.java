@@ -2,11 +2,10 @@ package electro_app.electro_app.domain.entities;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -32,8 +31,10 @@ public class Country {
     @Column(name = "nameCountry", nullable = false, unique = true)
     private String nameCountry;
 
+    @Embedded
+    private Audit audit = new Audit();
+
     @OneToMany(mappedBy = "idCountry",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<region> regions = new HashSet<>(); 
-
 }
