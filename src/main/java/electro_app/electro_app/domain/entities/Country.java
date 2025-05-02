@@ -14,12 +14,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Data
 @Getter
 @Setter
+@EqualsAndHashCode(exclude = {"regions"})   
+@ToString(exclude = {"regions"})
 @Table(name = "countries")
 @Entity
 public class Country {

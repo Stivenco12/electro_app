@@ -16,12 +16,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Data
 @Getter
 @Setter
+@EqualsAndHashCode(exclude = {"cities"})   
+@ToString(exclude = {"cities"})
 @Table(name = "regions")
 @Entity
 public class region {
