@@ -31,10 +31,10 @@ public class Country {
     @Column(name = "nameCountry", nullable = false, unique = true)
     private String nameCountry;
 
-    @Embedded
-    private Audit audit = new Audit();
-
     @OneToMany(mappedBy = "idCountry",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<region> regions = new HashSet<>(); 
+  
+    @Embedded
+    private Audit audit = new Audit();
 }

@@ -5,6 +5,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -40,4 +41,7 @@ public class region {
     @OneToMany(mappedBy = "idRegion",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<City> cities = new HashSet<>();
+
+    @Embedded
+    private Audit audit = new Audit();
 }

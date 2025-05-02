@@ -2,6 +2,7 @@ package electro_app.electro_app.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,4 +32,7 @@ public class City {
     @JoinColumn(name = "id_region")
     @JsonBackReference
     private region idRegion;
+
+    @Embedded
+    private Audit audit = new Audit();
 }
