@@ -23,16 +23,13 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = true, unique = true)
-    int id;
+    private int id;
 
     @Column(name = "nameCity", nullable = false, unique = true)
-    String nameCity;
-
-    @Column(name = "region_id", nullable = false)
-    int regionId;
+    private String nameCity;
 
     @ManyToOne
     @JoinColumn(name = "id_region")
     @JsonBackReference
-    region idRegion;
+    private region idRegion;
 }

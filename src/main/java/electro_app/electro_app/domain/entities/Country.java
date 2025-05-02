@@ -1,10 +1,18 @@
 package electro_app.electro_app.domain.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -19,10 +27,13 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = true, unique = true)
-    int id;
+    private int id;
     
     @Column(name = "nameCountry", nullable = false, unique = true)
-    String nameCountry;
+    private String nameCountry;
 
+    @OneToMany(mappedBy = "idCountry",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<region> regions = new HashSet<>(); 
 
 }
