@@ -9,9 +9,9 @@ public interface IRegionService {
 
     Optional<region> findById(int id);
 
-    String save(region region);
+    region save(region region);
 
-    Optional<region> update(int id, String region);
+    Optional<region> update(int id, region region);
 
     Optional<region> delete(int id);
 }

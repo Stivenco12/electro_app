@@ -9,9 +9,9 @@ public interface ICountryService {
 
     Optional<Country> findById(int id);
 
-    String save(Country country);
+    Country save(Country country);
 
-    Optional<Country> update(int id, String country);
+    Optional<Country> update(int id, Country country);
 
     Optional<Country> delete(int id);
 }

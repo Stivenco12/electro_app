@@ -9,9 +9,9 @@ public interface ICityService {
 
     Optional<City> findById(int id);
 
-    String save(City city);
+    City save(City city);
 
-    Optional<City> update(int id, String city);
+    Optional<City> update(int id, City city);
 
     Optional<City> delete(int id);
 } 
