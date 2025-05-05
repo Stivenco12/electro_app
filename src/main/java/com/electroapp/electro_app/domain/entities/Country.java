@@ -36,6 +36,6 @@ public class Country {
     Audit audit = new Audit();
 
     @OneToMany(mappedBy = "contryId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference // nunca colocar @JsonBackReference en un OneToMany, porque JsonBackReference no serializa la lista de objetos hijos
     private Set<Region> regions = new HashSet<>();
 }
