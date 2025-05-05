@@ -1,7 +1,6 @@
 package com.electroapp.electro_app.domain.entities;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.PrePersist;
