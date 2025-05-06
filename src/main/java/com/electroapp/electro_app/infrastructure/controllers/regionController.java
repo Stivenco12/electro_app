@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,6 +44,14 @@ public class regionController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Optional<Region> countryOptional = countryService.delete(id);
+        if (countryOptional.isPresent()) {
+            return ResponseEntity.ok(countryOptional.orElseThrow());
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Region country) {
+        Optional<Region> countryOptional = countryService.update(id, country);
         if (countryOptional.isPresent()) {
             return ResponseEntity.ok(countryOptional.orElseThrow());
         }

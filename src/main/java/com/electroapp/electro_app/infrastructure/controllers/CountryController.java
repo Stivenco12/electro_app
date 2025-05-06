@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.electroapp.electro_app.application.services.ICountryService;
 import com.electroapp.electro_app.domain.entities.Country;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/api/country")
@@ -43,6 +45,15 @@ public class CountryController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Optional<Country> countryOptional = countryService.delete(id);
+        if (countryOptional.isPresent()) {
+            return ResponseEntity.ok(countryOptional.orElseThrow());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Country country) {
+        Optional<Country> countryOptional = countryService.update(id, country);
         if (countryOptional.isPresent()) {
             return ResponseEntity.ok(countryOptional.orElseThrow());
         }
