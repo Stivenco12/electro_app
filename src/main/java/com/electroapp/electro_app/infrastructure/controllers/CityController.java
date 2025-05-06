@@ -2,6 +2,7 @@ package com.electroapp.electro_app.infrastructure.controllers;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,23 +14,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.electroapp.electro_app.application.services.IRegionService;
-import com.electroapp.electro_app.domain.entities.Region;
+
+import com.electroapp.electro_app.application.services.ICityService;
+import com.electroapp.electro_app.domain.entities.City;
 
 @RestController
-@RequestMapping("/api/region")
-public class regionController {
+@RequestMapping("/api/City")
+public class CityController {
     @Autowired
-    private IRegionService countryService;
+    private ICityService CityService;
 
     @GetMapping
-    public List<Region> list() {
-        return countryService.findAll();
+    public List<City> list() {
+        return CityService.findAll();
     }
     
     @GetMapping("/{id}")
     public ResponseEntity<?> view(@PathVariable Long id) {
-        Optional<Region> countryOptional = countryService.findById(id);
+        Optional<City> countryOptional = CityService.findById(id);
         if (countryOptional.isPresent()) {
             return ResponseEntity.ok(countryOptional.orElseThrow());
         }
@@ -37,21 +39,21 @@ public class regionController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody Region country) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(countryService.save(country));
+    public ResponseEntity<?> create(@RequestBody City country) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(CityService.save(country));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        Optional<Region> countryOptional = countryService.delete(id);
+        Optional<City> countryOptional = CityService.delete(id);
         if (countryOptional.isPresent()) {
             return ResponseEntity.ok(countryOptional.orElseThrow());
         }
         return ResponseEntity.notFound().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Region country) {
-        Optional<Region> countryOptional = countryService.update(id, country);
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody City country) {
+        Optional<City> countryOptional = CityService.update(id, country);
         if (countryOptional.isPresent()) {
             return ResponseEntity.ok(countryOptional.orElseThrow());
         }

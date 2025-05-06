@@ -26,7 +26,6 @@ public class Empleados {
 
     @OneToOne
     @JoinColumn(name = "Terceros_Id")
-    @JsonBackReference
     Terceros TercerosId;
 
     @ManyToOne
@@ -41,7 +40,6 @@ public class Empleados {
 
     @OneToOne
     @JoinColumn(name = "TipoDocumento_id")
-    @JsonBackReference
     TiposDocumentos TipoDocumentoId;
 
     @Embedded
