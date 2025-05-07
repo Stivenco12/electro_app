@@ -15,27 +15,12 @@ import com.electroapp.electro_app.infrastructure.models.Exception.CountryNotFoun
 
 @RestControllerAdvice
 public class HandlerExceptionController {
-
-    @ExceptionHandler({ArithmeticException.class})
-    public ResponseEntity<ErrorCustom> divisionByZero(Exception ex) {
-
-        ErrorCustom error = new ErrorCustom();
-        error.setDate(new Date());
-        error.setError("Error division por cero!");
-        error.setMessage(ex.getMessage());
-        error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-
-        // return ResponseEntity.internalServerError().body(error);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value()).body(error);
-    }
-
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<ErrorCustom> notFoundEx(NoResourceFoundException e) { 
         ErrorCustom error = new ErrorCustom();
         error.setDate(new Date());
         error.setError("Api rest no encontrado");
         error.setMessage(e.getMessage());
-
         error.setStatus(HttpStatus.NOT_FOUND.value());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(error);
@@ -44,7 +29,6 @@ public class HandlerExceptionController {
     @ExceptionHandler(NumberFormatException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, Object> numberFormatException(Exception ex) {
-
         Map<String, Object> error = new HashMap<>();
         error.put("date", new Date());
         error.put("error", "numero invalido o incorrecto, no tiene formato de digito!");
@@ -57,7 +41,6 @@ public class HandlerExceptionController {
     @ExceptionHandler({NullPointerException.class, HttpMessageNotWritableException.class,CountryNotFoundException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, Object> ContryNotFoundException(Exception ex){
-
         Map<String, Object> error = new HashMap<>();
         error.put("date", new Date());
         error.put("error", "el usuario no existe o no fue encontrado!");
