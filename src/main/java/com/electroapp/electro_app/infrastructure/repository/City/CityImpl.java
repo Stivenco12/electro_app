@@ -2,11 +2,9 @@ package com.electroapp.electro_app.infrastructure.repository.City;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.electroapp.electro_app.application.services.ICityService;
 import com.electroapp.electro_app.domain.entities.City;
 
