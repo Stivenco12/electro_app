@@ -31,8 +31,7 @@ public class CountryController {
     
     @GetMapping("/{id}")
     public Country show(@Validated @PathVariable Long id) {
-        Country country = countryService.findById(id)
-            .orElseThrow(() -> new CountryNotFoundException("Country not found"));
+        Country country = countryService.findById(id).orElseThrow(() -> new CountryNotFoundException("Country not found"));
         System.out.println(country.getName());
         return country;
     }
