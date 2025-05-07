@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.electroapp.electro_app.application.services.ICountryService;
 import com.electroapp.electro_app.domain.entities.Country;
+import com.electroapp.electro_app.infrastructure.models.Exception.CountryNotFoundException;
 import org.springframework.web.bind.annotation.PutMapping;
-
 
 @RestController
 @RequestMapping("/api/country")
@@ -29,12 +29,11 @@ public class CountryController {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<?> view(@PathVariable Long id) {
-        Optional<Country> countryOptional = countryService.findById(id);
-        if (countryOptional.isPresent()) {
-            return ResponseEntity.ok(countryOptional.orElseThrow());
-        }
-        return ResponseEntity.notFound().build();
+    public Country show(@PathVariable Long id) {
+        Country country = countryService.findById(id)
+            .orElseThrow(() -> new CountryNotFoundException("Country not found"));
+        System.out.println(country.getName());
+        return country;
     }
 
     @PostMapping
