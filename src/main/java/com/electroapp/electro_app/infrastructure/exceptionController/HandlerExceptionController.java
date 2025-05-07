@@ -60,7 +60,7 @@ public class HandlerExceptionController {
 
         Map<String, Object> error = new HashMap<>();
         error.put("date", new Date());
-        error.put("error", "el usuario o role no existe!");
+        error.put("error", "el usuario no existe o no fue encontrado!");
         error.put("message", ex.getMessage());
         error.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
 
