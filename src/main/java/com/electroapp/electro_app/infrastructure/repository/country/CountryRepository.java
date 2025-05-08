@@ -6,5 +6,5 @@ import com.electroapp.electro_app.domain.entities.Country;
 
 @Repository
 public interface CountryRepository extends JpaRepository<Country,Long> {
-
+    Boolean existsByCountryname(String countryname); 
 }
