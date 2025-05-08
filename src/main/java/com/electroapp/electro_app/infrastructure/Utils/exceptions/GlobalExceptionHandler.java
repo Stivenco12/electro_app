@@ -1,15 +1,12 @@
 package com.electroapp.electro_app.infrastructure.Utils.exceptions;
 
 import java.time.LocalDateTime;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import com.electroapp.electro_app.domain.Dto.ApiError;
-
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice

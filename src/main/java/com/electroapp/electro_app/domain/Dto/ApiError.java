@@ -32,5 +32,4 @@ public class ApiError implements Serializable {
     public void setTime(LocalDateTime time) {
         this.time = time;
     }
-      
 }
